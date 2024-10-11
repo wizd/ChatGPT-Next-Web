@@ -238,6 +238,9 @@ export class ChatGPTApi implements LLMApi {
       }
     }
 
+
+    (requestPayload as any)["session_id"] =
+      useChatStore.getState().currentSession().id;
     console.log("[Request] openai payload: ", requestPayload);
 
     const shouldStream = !isDalle3 && !!options.config.stream && !isO1;

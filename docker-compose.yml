@@ -3,7 +3,8 @@ services:
   chatgpt-next-web:
     profiles: [ "no-proxy", "" ]
     container_name: chatgpt-next-web
-    image: yidadaa/chatgpt-next-web
+    build: .  # 使用当前目录的 Dockerfile 构建镜像
+    image: chatgpt-next-web:local  # 为本地构建的镜像指定名称和标签
     ports:
       - 3502:3000
     environment:
@@ -21,7 +22,8 @@ services:
   chatgpt-next-web-proxy:
     profiles: [ "proxy" ]
     container_name: chatgpt-next-web-proxy
-    image: yidadaa/chatgpt-next-web
+    build: .  # 使用当前目录的 Dockerfile 构建镜像
+    image: chatgpt-next-web:local  # 为本地构建的镜像指定名称和标签
     ports:
       - 3000:3000
     environment:
